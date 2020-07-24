@@ -8,7 +8,7 @@
 
 ###  Postgres を起動する
 
-```
+```shell
 docker run \
     --rm \
     -d \
@@ -25,12 +25,29 @@ docker run \
 | -p                         | ホスト側とコンテナ側でポートをどのように紐付けるか（ホスト側：コンテナ側） |
 | -e POSTGRES_PASSWORD=hello | 環境変数 POSTGRES_PASSWORD を追加してパスワードを設定する    |
 
+### Postgres にアクセスする
+
+```shell
+psql -h localhost -p 15432 -U postgres
+```
+
+| オプションとコマンド | 意味                                                       |
+| -------------------- | ---------------------------------------------------------- |
+| psql                 | PostgresSQL でデータベースやテーブルを作成するためのツール |
+| -h                   | データベースサーバーのホスト名称                           |
+| -p 15432             | データベースサーバーのポスト番号                           |
+| -U                   | データベースのユーザーネーム                               |
+
 ### Postgres を終了する
 
-```
+```shell
 docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                     NAMES
 0e6c9569d374        postgres            "docker-entrypoint.s…"   11 minutes ago      Up 11 minutes       0.0.0.0:15432->5432/tcp   brave_greider
 docker kill 0e6c9569d374
 ```
 
+| マンド                          | 意味                                          |
+| ------------------------------- | --------------------------------------------- |
+| docker ps                       | Docker で起動しているコンテナの一覧を表示する |
+| docker kill &lt;ContainerId&gt; | Docker で起動しているコンテナを終了させる     |
