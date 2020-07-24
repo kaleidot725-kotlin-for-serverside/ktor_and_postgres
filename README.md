@@ -1,4 +1,4 @@
-# Ktor と Postgre Database を組み合わせて使ってみる
+# Ktor と Postgres を組み合わせて使ってみる
 
 
 
@@ -51,3 +51,28 @@ docker kill 0e6c9569d374
 | ------------------------------- | --------------------------------------------- |
 | docker ps                       | Docker で起動しているコンテナの一覧を表示する |
 | docker kill &lt;ContainerId&gt; | Docker で起動しているコンテナを終了させる     |
+
+
+
+## Ktor から Postgres にアクセスする
+
+### Exposed をセットアップする
+
+Ktor で Postgres にアクセスしたい場合は Exposed という ORM ライブラリを利用するのが良いらしい。なので Exposed を依存関係に追加しておく、後 Exposed で Postgres に接続するには Postgres のライブラリも導入する必要があるのでそちらもインストールしておく。
+
+```groovy
+dependencies {
+	def exposed_version = "0.24.1"
+	implementation "org.jetbrains.exposed:exposed-core:$exposed_version"
+	implementation "org.jetbrains.exposed:exposed-dao:$exposed_version"
+	implementation "org.jetbrains.exposed:exposed-jdbc:$exposed_version"
+
+	def postgresql_version = "42.2.2"
+	implementation "org.postgresql:postgresql:${postgresql_version}"
+}
+```
+
+
+
+
+
