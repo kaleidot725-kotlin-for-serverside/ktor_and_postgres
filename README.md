@@ -47,7 +47,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 docker kill 0e6c9569d374
 ```
 
-| マンド                          | 意味                                          |
+| オプションとコマンド            | 意味                                          |
 | ------------------------------- | --------------------------------------------- |
 | docker ps                       | Docker で起動しているコンテナの一覧を表示する |
 | docker kill &lt;ContainerId&gt; | Docker で起動しているコンテナを終了させる     |
